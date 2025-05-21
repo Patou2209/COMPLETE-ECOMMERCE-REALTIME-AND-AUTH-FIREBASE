@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecommerce</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section id="header">
+  <a href="#"><img src="img/logo.png" alt="" class="logo"></a>
+  <div>
+    <ul id="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="contact.html">contact</a></li>
+      <li id="bag"><a href="cart.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+      <a href="#" id="close"><i class="far fa-times"></i></a>
+    </ul>
+  </div>
+  <div class="mobile">
+    <a href="cart.html"><i class="fas fa-shopping-bag" aria-hidden="true"></i></a>
+    <i id="bar" class="fas fa-outdent"></i>
+  </div>
+</section>
+
+<div class="posting">
+  <h4>Bienvenue, <span id="user-name"></span> !</h4>
+  <button id="logout-btn" class="normal" style="background-color: rgb(122, 35, 35); color: white; margin-top: 15px;">Déconnexion</button>
+
+  <div class="posting-form">
+    <p style="text-align: center;">Publier un article</p>
+    <form id="ad-form">
+      <input type="text" id="ad-category" class="form-control" placeholder="Categorie" required>
+      <textarea id="ad-title" class="form-control" placeholder="Titre de l'annonce" required></textarea>
+      <input type="number" id="ad-price" class="form-control" placeholder="Prix" required>
+      <input type="file" id="ad-image" class="form-control" accept="image/*">
+      <button type="submit" class="normal">Publier</button>
+    </form>
+  </div>
+  <p style="text-align: center;">Vos annonces:</p>
+</div>
+
+
+<div id="product1" class="section-p1"></div>
+
+<script type="module" src="auth.js"></script>
+<script type="module" src="realtime.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

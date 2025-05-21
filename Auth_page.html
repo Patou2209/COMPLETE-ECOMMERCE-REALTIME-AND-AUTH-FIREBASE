@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion - Ecommerce</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section id="header">
+    <a href="#"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="bag"><a href="cart.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+        <a href="#" id="close"><i class="far fa-times"></i></a>
+      </ul>
+    </div>
+    <div class="mobile">
+      <a href="cart.html"><i class="fas fa-shopping-bag" aria-hidden="true"></i></a>
+      <i id="bar" class="fas fa-outdent"></i>
+    </div>
+  </section>
+
+  <div id="login-box">
+    <h3>Connexion</h3>
+    <input type="email" id="email" placeholder="Adresse email">
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button id="login-btn" class="normal">Se connecter</button>
+    <p id="message" style="color: red;"></p>
+  </div>
+
+  <!-- ✅ Firebase avec modules -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDrMdKFJDEpTwnjT9voJ_Pdp3hR6_mCOns",
+      authDomain: "realtime-database-1f94c.firebaseapp.com",
+      databaseURL: "https://realtime-database-1f94c-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "realtime-database-1f94c",
+      storageBucket: "realtime-database-1f94c.firebasestorage.app",
+      messagingSenderId: "567513822066",
+      appId: "1:567513822066:web:6cbdd8ecd53f474914a3eb"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("login-btn").addEventListener("click", () => {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const message = document.getElementById("message");
+
+      if (!email || !password) {
+        message.textContent = "Veuillez remplir tous les champs.";
+        return;
+      }
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          message.style.color = "green";
+          message.textContent = "Connexion réussie. Redirection...";
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1500);
+        })
+        .catch(error => {
+          message.style.color = "red";
+          message.textContent = "Erreur : " + error.message;
+        });
+    });
+  </script>
+  
+
+</body>
+
+</html>
